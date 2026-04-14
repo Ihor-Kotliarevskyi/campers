@@ -5,23 +5,25 @@ import { useCampers } from '@/hooks/useCampers';
 import FiltersPanel from '@/components/FiltersPanel/FiltersPanel';
 import CamperList from '@/components/CamperList/CamperList';
 import LoadMoreButton from '@/components/LoadMoreButton/LoadMoreButton';
+import { CamperFilters, CamperForm, Engine, Transmission } from '@/types/camper';
+import styles from './CatalogPageClient.module.css';
 
-export default function CatalogPage() {
+export default function CatalogPageClient() {
   const searchParams = useSearchParams();
-  const filters = {
+  const filters: CamperFilters = {
     location: searchParams.get('location') || undefined,
-    form: searchParams.get('form') || undefined,
-    engine: searchParams.get('engine') || undefined,
-    transmission: searchParams.get('transmission') || undefined,
+    form: (searchParams.get('form') || undefined) as CamperForm | undefined,
+    engine: (searchParams.get('engine') || undefined) as Engine | undefined,
+    transmission: (searchParams.get('transmission') || undefined) as Transmission | undefined,
   };
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useCampers(filters);
-  const campers = data?.pages.flatMap(p => p.items) ?? [];
+  const campers = data?.pages.flatMap((p) => p.items) ?? [];
 
   return (
-    <div className="layout">
+    <div className={styles.layout}>
       <FiltersPanel />
-      <div>
+      <div className={styles.content}>
         <CamperList campers={campers} />
         {hasNextPage && (
           <LoadMoreButton onClick={fetchNextPage} loading={isFetchingNextPage} />
