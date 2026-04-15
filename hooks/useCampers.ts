@@ -10,7 +10,7 @@ export const useCampers = (filters: CamperFilters) => {
     queryFn: ({ pageParam = 1 }) => fetchCampers(pageParam, filters),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
-      const loaded = allPages.flatMap(p => p.items).length;
+      const loaded = allPages.reduce((acc, p) => acc + p.items.length, 0);
       return loaded < lastPage.total ? allPages.length + 1 : undefined;
     },
   });
