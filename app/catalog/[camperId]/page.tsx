@@ -27,7 +27,7 @@ export default async function CamperDetailPage({
           <div className={styles.metaRow}>
             <span className={styles.rating}>
               <Icon id="star-filled" size={16} color="var(--color-accent)" />
-              {camper.rating}({camper.reviews.length} Reviews)
+              {camper.rating} ({camper.reviews.length} Reviews)
             </span>
             <span className={styles.location}>
               <Icon id="map" size={16} color="var(--color-text-secondary)" />

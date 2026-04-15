@@ -37,7 +37,7 @@ export default function CamperCard({ camper }: { camper: Camper }) {
         <div className={styles.metaRow}>
           <span className={styles.rating}>
             <Icon id="star-filled" size={16} color="var(--color-accent)" />
-            {rating}({reviews.length} Reviews)
+            {rating} ({reviews.length} Reviews)
           </span>
           <span className={styles.location}>
             <Icon id="map" size={16} color="var(--color-text-secondary)" />
