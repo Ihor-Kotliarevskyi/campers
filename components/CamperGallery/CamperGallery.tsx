@@ -10,8 +10,10 @@ import 'swiper/css/free-mode';
 import 'swiper/css/thumbs';
 import styles from './CamperGallery.module.css';
 
-export default function CamperGallery({ gallery }: { gallery: { thumb: string; original: string }[] }) {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+interface GalleryItem {
+  thumb: string;
+  original: string;
+}
 
 function ChevronLeft() {
   return (
