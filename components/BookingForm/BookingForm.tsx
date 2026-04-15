@@ -19,8 +19,8 @@ export default function BookingForm({ camperId }: { camperId: string }) {
     { resetForm }: { resetForm: () => void }
   ) => {
     try {
-      await submitBooking(camperId, values);
-      toast.success('Booking successful! We will contact you soon.');
+      const { message } = await submitBooking(camperId, values);
+      toast.success(message);
       resetForm();
     } catch {
       toast.error('Something went wrong. Please try again.');

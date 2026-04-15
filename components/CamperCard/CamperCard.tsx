@@ -6,14 +6,14 @@ import styles from './CamperCard.module.css';
 
 const FORM_LABELS: Record<string, string> = {
   alcove: 'Alcove',
-  panelTruck: 'Panel Van',
-  fullyIntegrated: 'Integrated',
-  semiIntegrated: 'Semi Integrated',
+  panel_van: 'Panel Van',
+  integrated: 'Integrated',
+  semi_integrated: 'Semi Integrated',
 };
 
 export default function CamperCard({ camper }: { camper: Camper }) {
-  const { id, name, price, rating, location, description, form, engine, transmission, reviews, gallery } = camper;
-  const mainImage = gallery?.[0]?.thumb ?? gallery?.[0]?.original ?? '';
+  const { id, name, price, rating, location, description, form, engine, transmission, totalReviews, coverImage } = camper;
+  const mainImage = coverImage ?? '';
 
   return (
     <article className={styles.card}>
@@ -37,7 +37,7 @@ export default function CamperCard({ camper }: { camper: Camper }) {
         <div className={styles.metaRow}>
           <span className={styles.rating}>
             <Icon id="star-filled" size={16} color="var(--color-accent)" />
-            {rating} ({reviews.length} Reviews)
+            {rating} ({totalReviews} Reviews)
           </span>
           <span className={styles.location}>
             <Icon id="map" size={16} color="var(--color-text-secondary)" />

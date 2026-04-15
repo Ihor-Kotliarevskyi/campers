@@ -5,9 +5,9 @@ import styles from './CamperFeatures.module.css';
 
 const FORM_LABELS: Record<string, string> = {
   alcove: 'Alcove',
-  panelTruck: 'Panel truck',
-  fullyIntegrated: 'Integrated',
-  semiIntegrated: 'Semi Integrated',
+  panel_van: 'Panel Van',
+  integrated: 'Integrated',
+  semi_integrated: 'Semi Integrated',
 };
 
 interface AmenityTag {
@@ -17,18 +17,20 @@ interface AmenityTag {
 }
 
 export default function CamperFeatures({ camper }: { camper: Camper }) {
+  const has = (key: string) => camper.amenities.includes(key);
+
   const amenityTags: AmenityTag[] = [
     { label: 'Automatic', icon: 'automatic', active: camper.transmission === 'automatic' },
     { label: 'Manual',    icon: 'manual',    active: camper.transmission === 'manual' },
-    { label: 'AC',        icon: 'ac',        active: camper.AC },
-    { label: 'Bathroom',  icon: 'shower',    active: camper.bathroom },
-    { label: 'Kitchen',   icon: 'kitchen',   active: camper.kitchen },
-    { label: 'TV',        icon: 'tv',        active: camper.TV },
-    { label: 'Radio',     icon: 'radio',     active: camper.radio },
-    { label: 'Fridge',    icon: 'refrigerator', active: camper.refrigerator },
-    { label: 'Microwave', icon: 'microwave', active: camper.microwave },
-    { label: 'Gas',       icon: 'flame',     active: camper.gas },
-    { label: 'Water',     icon: 'water',     active: camper.water },
+    { label: 'AC',        icon: 'ac',        active: has('ac') },
+    { label: 'Bathroom',  icon: 'shower',    active: has('bathroom') },
+    { label: 'Kitchen',   icon: 'kitchen',   active: has('kitchen') },
+    { label: 'TV',        icon: 'tv',        active: has('tv') },
+    { label: 'Radio',     icon: 'radio',     active: has('radio') },
+    { label: 'Fridge',    icon: 'refrigerator', active: has('refrigerator') },
+    { label: 'Microwave', icon: 'microwave', active: has('microwave') },
+    { label: 'Gas',       icon: 'flame',     active: has('gas') },
+    { label: 'Water',     icon: 'water',     active: has('water') },
     {
       label: camper.engine.charAt(0).toUpperCase() + camper.engine.slice(1),
       icon: 'gas-pump',

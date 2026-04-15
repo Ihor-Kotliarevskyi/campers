@@ -1,6 +1,27 @@
-export type CamperForm = 'alcove' | 'fullyIntegrated' | 'panelTruck';
-export type Engine = 'diesel' | 'petrol' | 'hybrid';
+export type CamperForm = 'alcove' | 'integrated' | 'panel_van' | 'semi_integrated';
+export type Engine = 'diesel' | 'petrol' | 'hybrid' | 'electric';
 export type Transmission = 'automatic' | 'manual';
+
+export interface GalleryItem {
+  id: string;
+  camperId: string;
+  thumb: string;
+  original: string;
+  order: number;
+}
+
+export interface Review {
+  id: string;
+  camperId: string;
+  reviewer_name: string;
+  reviewer_rating: number;
+  comment: string;
+  createdAt: string;
+}
+
+export interface BookingResponse {
+  message: string;
+}
 
 export interface Camper {
   id: string;
@@ -8,17 +29,19 @@ export interface Camper {
   price: number;
   rating: number;
   location: string;
-  description: string;
+  description?: string;
   form: CamperForm;
   engine: Engine;
   transmission: Transmission;
   length: string; width: string; height: string;
   tank: string; consumption: string;
-  AC: boolean; bathroom: boolean; kitchen: boolean;
-  TV: boolean; radio: boolean; refrigerator: boolean;
-  microwave: boolean; gas: boolean; water: boolean;
-  gallery: { thumb: string; original: string }[];
-  reviews: { reviewer_name: string; reviewer_rating: number; comment: string }[];
+  amenities: string[];
+  coverImage: string;
+  totalReviews: number;
+}
+
+export interface CamperDetail extends Camper {
+  gallery: GalleryItem[];
 }
 
 export interface CampersResponse {

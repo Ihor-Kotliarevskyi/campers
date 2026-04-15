@@ -7,9 +7,9 @@ import styles from './FiltersPanel.module.css';
 
 const FORM_OPTIONS = [
   { value: 'alcove',          label: 'Alcove' },
-  { value: 'panelTruck',      label: 'Panel Van' },
-  { value: 'fullyIntegrated', label: 'Integrated' },
-  { value: 'semiIntegrated',  label: 'Semi Integrated' },
+  { value: 'panel_van',       label: 'Panel Van' },
+  { value: 'integrated',      label: 'Integrated' },
+  { value: 'semi_integrated', label: 'Semi Integrated' },
 ];
 
 const ENGINE_OPTIONS = [
