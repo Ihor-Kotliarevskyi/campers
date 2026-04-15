@@ -19,7 +19,19 @@ export const fetchCampers = async (
   return data;
 };
 
-export const fetchCamperById = async (id: string): Promise<Camper> => {
-  const { data } = await api.get<Camper>(`/campers/${id}`);
+export const fetchCamperById = async (camperId: string): Promise<Camper> => {
+  const { data } = await api.get<Camper>(`/campers/${camperId}`);
   return data;
+};
+
+export const submitBooking = async (
+  camperId: string,
+  payload: { name: string; email: string; }
+): Promise<{ success: boolean }> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`Booking submitted for camper ${camperId}:`, payload);
+      resolve({ success: true });
+    }, 1000);
+  });
 };
