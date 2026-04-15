@@ -1,7 +1,7 @@
 @import "modern-normalize";
 @import "tailwindcss";
 
-:root {
+@theme {
   --color-primary: #6d7b75;
   --color-primary-hover: #829b91;
   --color-text-main: #101828;
@@ -19,8 +19,6 @@ body {
   background: var(--color-white);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+.swiper-slide-thumb-active .thumb-slide {
+  opacity: 1 !important;
 }

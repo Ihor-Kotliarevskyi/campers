@@ -8,7 +8,6 @@ import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/thumbs';
-import styles from './CamperGallery.module.css';
 
 interface GalleryItem {
   thumb: string;
@@ -38,7 +37,7 @@ export default function CamperGallery({ gallery }: { gallery: GalleryItem[] }) {
   if (!gallery || gallery.length === 0) return null;
 
   return (
-    <div className={styles.wrapper}>
+    <div className="flex flex-col-reverse gap-4 min-w-0 overflow-hidden">
       {gallery.length > 1 && (
         <Swiper
           modules={[FreeMode, Thumbs]}
@@ -47,17 +46,17 @@ export default function CamperGallery({ gallery }: { gallery: GalleryItem[] }) {
           slidesPerView={4}
           freeMode
           watchSlidesProgress
-          className={styles.thumbsSwiper}
+          className="w-full h-24 overflow-hidden"
         >
           {gallery.map((img, i) => (
             <SwiperSlide key={i}>
-              <div className={styles.thumbSlide}>
+              <div className="thumb-slide relative w-full h-24 rounded-[10px] overflow-hidden cursor-pointer opacity-50 transition-opacity hover:opacity-[0.85]">
                 <Image
                   src={img.thumb}
                   alt={`Thumbnail ${i + 1}`}
                   fill
                   sizes="130px"
-                  className={styles.thumbImage}
+                  className="object-cover"
                 />
               </div>
             </SwiperSlide>
@@ -65,24 +64,24 @@ export default function CamperGallery({ gallery }: { gallery: GalleryItem[] }) {
         </Swiper>
       )}
 
-      <div className={styles.mainWrapper}>
+      <div className="relative rounded-2xl overflow-hidden">
         <Swiper
           modules={[Thumbs, FreeMode]}
           thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
           onSwiper={(swiper) => { mainSwiperRef.current = swiper; }}
           loop
           spaceBetween={0}
-          className={styles.mainSwiper}
+          className="w-full h-[430px]"
         >
           {gallery.map((img, i) => (
             <SwiperSlide key={i}>
-              <div className={styles.mainSlide}>
+              <div className="relative w-full h-[430px]">
                 <Image
                   src={img.original}
                   alt={`Camper photo ${i + 1}`}
                   fill
                   sizes="600px"
-                  className={styles.mainImage}
+                  className="object-cover object-center"
                   priority={i === 0}
                   loading={i === 0 ? 'eager' : 'lazy'}
                 />
@@ -92,14 +91,14 @@ export default function CamperGallery({ gallery }: { gallery: GalleryItem[] }) {
         </Swiper>
 
         <button
-          className={`${styles.navBtn} ${styles.navBtnPrev}`}
+          className="absolute top-1/2 -translate-y-1/2 left-4 z-10 w-11 h-11 rounded-full border-none cursor-pointer bg-white/45 text-text-main flex items-center justify-center p-0 transition-colors hover:bg-white/85"
           onClick={() => mainSwiperRef.current?.slidePrev()}
           aria-label="Previous photo"
         >
           <ChevronLeft />
         </button>
         <button
-          className={`${styles.navBtn} ${styles.navBtnNext}`}
+          className="absolute top-1/2 -translate-y-1/2 right-4 z-10 w-11 h-11 rounded-full border-none cursor-pointer bg-white/45 text-text-main flex items-center justify-center p-0 transition-colors hover:bg-white/85"
           onClick={() => mainSwiperRef.current?.slideNext()}
           aria-label="Next photo"
         >
