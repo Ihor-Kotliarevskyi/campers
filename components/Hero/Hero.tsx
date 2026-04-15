@@ -1,11 +1,16 @@
 import Link from 'next/link';
+import styles from './Hero.module.css';
 
 export default function Hero() {
   return (
-    <section>
-      <h1>Campers for your adventures</h1>
-      <p>...</p>
-      <Link href="/catalog">View Now</Link>
+    <section className={styles.hero}>
+      <div className={styles.content}>
+        <h1 className={styles.title}>Campers of your dreams</h1>
+        <p className={styles.subtitle}>You can find everything you want in our catalog</p>
+        <Link href="/catalog" className={styles.btn}>
+          View Now
+        </Link>
+      </div>
     </section>
   );
 }
