@@ -1,0 +1,89 @@
+.page {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.topSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  min-width: 0;
+}
+
+.gallery {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.name {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin: 0;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  color: var(--color-text-main);
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  color: var(--color-text-main);
+}
+
+.price {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin: 0;
+}
+
+.description {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.bottomSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  padding-bottom: 64px;
+  min-width: 0;
+}
+
+.reviews {
+  min-width: 0;
+}
+
+.booking {
+  min-width: 0;
+}
