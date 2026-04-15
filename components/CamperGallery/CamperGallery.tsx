@@ -6,7 +6,7 @@ import 'swiper/css/thumbs';
 import { useState } from 'react';
 import Image from 'next/image';
 
-export default function CamperGallery({ gallery }: { gallery: any[] }) {
+export default function CamperGallery({ gallery }: { gallery: { thumb: string; original: string }[] }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
