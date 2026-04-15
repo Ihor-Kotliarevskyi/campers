@@ -1,4 +1,4 @@
-import { fetchCamperById } from '@/lib/api';
+import { fetchCamperById, fetchCamperReviews } from '@/lib/api';
 import Icon from '@/components/Icon/Icon';
 import CamperGallery from '@/components/CamperGallery/CamperGallery';
 import CamperFeatures from '@/components/CamperFeatures/CamperFeatures';
@@ -12,7 +12,10 @@ export default async function CamperDetailPage({
   params: Promise<{ camperId: string }>;
 }) {
   const { camperId } = await params;
-  const camper = await fetchCamperById(camperId);
+  const [camper, reviews] = await Promise.all([
+    fetchCamperById(camperId),
+    fetchCamperReviews(camperId),
+  ]);
 
   return (
     <div className={styles.page}>
@@ -27,7 +30,7 @@ export default async function CamperDetailPage({
           <div className={styles.metaRow}>
             <span className={styles.rating}>
               <Icon id="star-filled" size={16} color="var(--color-accent)" />
-              {camper.rating} ({camper.reviews.length} Reviews)
+              {camper.rating} ({reviews.length} Reviews)
             </span>
             <span className={styles.location}>
               <Icon id="map" size={16} color="var(--color-text-secondary)" />
@@ -44,7 +47,7 @@ export default async function CamperDetailPage({
 
       <section className={styles.bottomSection}>
         <div className={styles.reviews}>
-          <CamperReviews reviews={camper.reviews} />
+          <CamperReviews reviews={reviews} />
         </div>
         <div className={styles.booking}>
           <BookingForm camperId={camper.id} />

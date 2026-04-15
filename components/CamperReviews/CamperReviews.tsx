@@ -1,11 +1,6 @@
 import Icon from '@/components/Icon/Icon';
+import { Review } from '@/types/camper';
 import styles from './CamperReviews.module.css';
-
-interface Review {
-  reviewer_name: string;
-  reviewer_rating: number;
-  comment: string;
-}
 
 function StarRating({ rating }: { rating: number }) {
   return (
