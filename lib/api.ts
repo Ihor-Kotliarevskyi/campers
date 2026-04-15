@@ -2,7 +2,7 @@ import axios from 'axios';
 import { CampersResponse, Camper, CamperFilters } from '@/types/camper';
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://66b1f8e71ca8ad33d4f5f63e.mockapi.io',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://campers-api.goit.study',
 });
 
 export const fetchCampers = async (
