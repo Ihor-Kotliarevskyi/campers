@@ -1,0 +1,22 @@
+.btn {
+  display: block;
+  margin: 48px auto 0;
+  padding: 16px 48px;
+  background: transparent;
+  color: var(--color-text-main);
+  border: 1px solid var(--color-text-main);
+  border-radius: 200px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.7;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
