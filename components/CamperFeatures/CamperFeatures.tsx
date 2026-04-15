@@ -1,7 +1,6 @@
 import { Camper } from '@/types/camper';
 import Icon from '@/components/Icon/Icon';
 import type { IconId } from '@/components/Icon/Icon';
-import styles from './CamperFeatures.module.css';
 
 const FORM_LABELS: Record<string, string> = {
   alcove: 'Alcove',
@@ -31,16 +30,8 @@ export default function CamperFeatures({ camper }: { camper: Camper }) {
     { label: 'Microwave', icon: 'microwave', active: has('microwave') },
     { label: 'Gas',       icon: 'flame',     active: has('gas') },
     { label: 'Water',     icon: 'water',     active: has('water') },
-    {
-      label: camper.engine.charAt(0).toUpperCase() + camper.engine.slice(1),
-      icon: 'gas-pump',
-      active: true,
-    },
-    {
-      label: FORM_LABELS[camper.form] ?? camper.form,
-      icon: 'van',
-      active: true,
-    },
+    { label: camper.engine.charAt(0).toUpperCase() + camper.engine.slice(1), icon: 'gas-pump', active: true },
+    { label: FORM_LABELS[camper.form] ?? camper.form, icon: 'van', active: true },
   ];
 
   const activeTags = amenityTags.filter((t) => t.active);
@@ -55,25 +46,25 @@ export default function CamperFeatures({ camper }: { camper: Camper }) {
   ];
 
   return (
-    <div className={styles.wrapper}>
-      <h2 className={styles.heading}>Vehicle details</h2>
+    <div className="flex flex-col">
+      <h2 className="text-xl font-semibold text-text-main m-0 mb-6">Vehicle details</h2>
 
-      <div className={styles.tags}>
+      <div className="flex flex-wrap gap-2 mb-6">
         {activeTags.map((t) => (
-          <span key={t.label} className={styles.tag}>
+          <span key={t.label} className="inline-flex items-center gap-[6px] px-[18px] py-2 bg-bg-gray rounded-full text-sm font-medium text-text-main">
             <Icon id={t.icon} size={18} />
             {t.label}
           </span>
         ))}
       </div>
 
-      <hr className={styles.divider} />
+      <hr className="border-0 border-t border-border mb-4" />
 
-      <dl className={styles.specs}>
+      <dl className="flex flex-col m-0">
         {specs.map(({ label, value }) => (
-          <div key={label} className={styles.specRow}>
-            <dt className={styles.specLabel}>{label}</dt>
-            <dd className={styles.specValue}>{value}</dd>
+          <div key={label} className="flex justify-between items-center py-3 border-b border-border last:border-b-0">
+            <dt className="text-base text-text-main">{label}</dt>
+            <dd className="text-base text-text-main font-medium m-0">{value}</dd>
           </div>
         ))}
       </dl>

@@ -6,7 +6,6 @@ import FiltersPanel from '@/components/FiltersPanel/FiltersPanel';
 import CamperList from '@/components/CamperList/CamperList';
 import LoadMoreButton from '@/components/LoadMoreButton/LoadMoreButton';
 import { CamperFilters, CamperForm, Engine, Transmission } from '@/types/camper';
-import styles from './CatalogPageClient.module.css';
 
 export default function CatalogPageClient() {
   const searchParams = useSearchParams();
@@ -21,9 +20,9 @@ export default function CatalogPageClient() {
   const campers = data?.pages.flatMap((p) => p.items) ?? [];
 
   return (
-    <div className={styles.layout}>
+    <div className="flex gap-16 max-w-[1440px] mx-auto p-16 items-start">
       <FiltersPanel />
-      <div className={styles.content}>
+      <div className="flex-1 min-w-0 pb-16">
         <CamperList campers={campers} />
         {hasNextPage && (
           <LoadMoreButton onClick={fetchNextPage} loading={isFetchingNextPage} />

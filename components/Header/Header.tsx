@@ -7,46 +7,23 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header style={{ background: 'var(--color-white)', borderBottom: '1px solid var(--color-border)' }}>
-      <div
-        style={{
-          maxWidth: 1440,
-          margin: '0 auto',
-          padding: '20px 64px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
-        <Link href="/" style={{ textDecoration: 'none' }}>
-          <span style={{ fontWeight: 700, color: 'var(--color-text-main)', fontSize: 20 }}>
-            Travel
-          </span>
-          <span style={{ fontWeight: 400, color: 'var(--color-text-main)', fontSize: 20 }}>
-            Trucks
-          </span>
+    <header className="bg-white border-b border-border">
+      <div className="max-w-[1440px] mx-auto px-16 py-5 flex items-center justify-between">
+        <Link href="/" className="no-underline">
+          <span className="font-bold text-text-main text-xl">Travel</span>
+          <span className="font-normal text-text-main text-xl">Trucks</span>
         </Link>
 
-        <nav style={{ display: 'flex', gap: 40 }}>
+        <nav className="flex gap-10">
           <Link
             href="/"
-            style={{
-              textDecoration: 'none',
-              fontSize: 16,
-              fontWeight: 500,
-              color: pathname === '/' ? 'var(--color-text-main)' : 'var(--color-text-secondary)',
-            }}
+            className={`no-underline text-base font-medium ${pathname === '/' ? 'text-text-main' : 'text-text-secondary'}`}
           >
             Home
           </Link>
           <Link
             href="/catalog"
-            style={{
-              textDecoration: 'none',
-              fontSize: 16,
-              fontWeight: 500,
-              color: pathname.startsWith('/catalog') ? 'var(--color-text-main)' : 'var(--color-text-secondary)',
-            }}
+            className={`no-underline text-base font-medium ${pathname.startsWith('/catalog') ? 'text-text-main' : 'text-text-secondary'}`}
           >
             Catalog
           </Link>
