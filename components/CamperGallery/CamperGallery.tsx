@@ -91,14 +91,14 @@ export default function CamperGallery({ gallery }: { gallery: GalleryItem[] }) {
         </Swiper>
 
         <button
-          className="absolute top-1/2 -translate-y-1/2 left-4 z-10 w-11 h-11 rounded-full border-none cursor-pointer bg-white/45 text-text-main flex items-center justify-center p-0 transition-colors hover:bg-white/85"
+          className="absolute top-1/2 -translate-y-1/2 left-4 z-10 w-11 h-11 rounded-full border-none cursor-pointer bg-white/45 text-[var(--main)] flex items-center justify-center p-0 transition-colors hover:bg-white/85"
           onClick={() => mainSwiperRef.current?.slidePrev()}
           aria-label="Previous photo"
         >
           <ChevronLeft />
         </button>
         <button
-          className="absolute top-1/2 -translate-y-1/2 right-4 z-10 w-11 h-11 rounded-full border-none cursor-pointer bg-white/45 text-text-main flex items-center justify-center p-0 transition-colors hover:bg-white/85"
+          className="absolute top-1/2 -translate-y-1/2 right-4 z-10 w-11 h-11 rounded-full border-none cursor-pointer bg-white/45 text-[var(--main)] flex items-center justify-center p-0 transition-colors hover:bg-white/85"
           onClick={() => mainSwiperRef.current?.slideNext()}
           aria-label="Next photo"
         >

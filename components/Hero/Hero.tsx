@@ -13,7 +13,7 @@ export default function Hero() {
         <p className="text-base text-white m-0 leading-relaxed">You can find everything you want in our catalog</p>
         <Link
           href="/catalog"
-          className="inline-flex items-center justify-center px-10 py-4 bg-primary text-white rounded-full text-base font-medium no-underline w-fit transition-colors hover:bg-primary-hover"
+          className="inline-flex items-center justify-center px-10 py-4 bg-[var(--button)] text-white rounded-full text-base font-medium no-underline w-fit transition-colors hover:bg-[var(--button-hover)]"
         >
           View Now
         </Link>

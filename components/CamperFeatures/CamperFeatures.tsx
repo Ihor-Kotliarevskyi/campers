@@ -47,24 +47,24 @@ export default function CamperFeatures({ camper }: { camper: Camper }) {
 
   return (
     <div className="flex flex-col">
-      <h2 className="text-xl font-semibold text-text-main m-0 mb-6">Vehicle details</h2>
+      <h2 className="text-xl font-semibold text-[var(--main)] m-0 mb-6">Vehicle details</h2>
 
       <div className="flex flex-wrap gap-2 mb-6">
         {activeTags.map((t) => (
-          <span key={t.label} className="inline-flex items-center gap-[6px] px-[18px] py-2 bg-bg-gray rounded-full text-sm font-medium text-text-main">
+          <span key={t.label} className="inline-flex items-center gap-[6px] px-[18px] py-2 bg-[var(--badges)] rounded-full text-sm font-medium text-[var(--main)]">
             <Icon id={t.icon} size={18} />
             {t.label}
           </span>
         ))}
       </div>
 
-      <hr className="border-0 border-t border-border mb-4" />
+      <hr className="border-0 border-t border-[var(--gray-light)] mb-4" />
 
       <dl className="flex flex-col m-0">
         {specs.map(({ label, value }) => (
-          <div key={label} className="flex justify-between items-center py-3 border-b border-border last:border-b-0">
-            <dt className="text-base text-text-main">{label}</dt>
-            <dd className="text-base text-text-main font-medium m-0">{value}</dd>
+          <div key={label} className="flex justify-between items-center py-3 border-b border-[var(--gray-light)] last:border-b-0">
+            <dt className="text-base text-[var(--main)]">{label}</dt>
+            <dd className="text-base text-[var(--main)] font-medium m-0">{value}</dd>
           </div>
         ))}
       </dl>

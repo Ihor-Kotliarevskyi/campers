@@ -24,21 +24,21 @@ export default async function CamperDetailPage({
         </div>
 
         <div className="flex flex-col gap-4 min-w-0">
-          <h1 className="text-[32px] font-semibold text-text-main m-0">{camper.name}</h1>
+          <h1 className="text-[32px] font-semibold text-[var(--main)] m-0">{camper.name}</h1>
 
           <div className="flex items-center gap-4 flex-wrap">
-            <span className="flex items-center gap-1 text-base text-text-main">
-              <Icon id="star-filled" size={16} color="var(--color-accent)" />
+            <span className="flex items-center gap-1 text-base text-[var(--main)]">
+              <Icon id="star-filled" size={16} color="var(--rating)" />
               {camper.rating} ({reviews.length} Reviews)
             </span>
-            <span className="flex items-center gap-1 text-base text-text-main">
-              <Icon id="map" size={16} color="var(--color-text-secondary)" />
+            <span className="flex items-center gap-1 text-base text-[var(--main)]">
+              <Icon id="map" size={16} color="var(--text)" />
               {camper.location}
             </span>
           </div>
 
-          <p className="text-[28px] font-semibold text-text-main m-0">€{camper.price.toLocaleString()}</p>
-          <p className="text-base text-text-secondary leading-relaxed m-0">{camper.description}</p>
+          <p className="text-[28px] font-semibold text-[var(--main)] m-0">€{camper.price.toLocaleString()}</p>
+          <p className="text-base text-[var(--text)] leading-relaxed m-0">{camper.description}</p>
 
           <CamperFeatures camper={camper} />
         </div>

@@ -67,33 +67,33 @@ export default function FiltersPanel() {
   return (
     <aside className="w-[260px] shrink-0 flex flex-col">
       <div className="flex flex-col gap-2 mb-8">
-        <label className="text-sm text-text-secondary font-medium">Location</label>
-        <div className="flex items-center gap-2 bg-white rounded-xl px-[18px] py-[14px] border border-border">
-          <Icon id="map" size={20} color="var(--color-text-secondary)" />
+        <label className="text-sm text-[var(--text)] font-medium">Location</label>
+        <div className="flex items-center gap-2 bg-white rounded-xl px-[18px] py-[14px] border border-[var(--gray-light)]">
+          <Icon id="map" size={20} color="var(--text)" />
           <input
             type="text"
             placeholder="City"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="border-none outline-none text-base text-text-main bg-transparent w-full placeholder:text-text-secondary"
+            className="border-none outline-none text-base text-[var(--main)] bg-transparent w-full placeholder:text-[var(--text)]"
           />
         </div>
       </div>
 
-      <h2 className="text-xl font-semibold text-text-main m-0 mb-6">Filters</h2>
+      <h2 className="text-xl font-semibold text-[var(--main)] m-0 mb-6">Filters</h2>
 
       {FILTER_GROUPS.map(({ name, legend, options }) => (
         <fieldset key={name} className="border-none p-0 m-0 mb-6">
-          <legend className="text-sm text-text-secondary font-medium mb-3 p-0">{legend}</legend>
+          <legend className="text-sm text-[var(--text)] font-medium mb-3 p-0">{legend}</legend>
           {options.map((opt) => (
-            <label key={opt.value} className="flex items-center gap-3 text-base text-text-main cursor-pointer py-[6px]">
+            <label key={opt.value} className="flex items-center gap-3 text-base text-[var(--main)] cursor-pointer py-[6px]">
               <input
                 type="radio"
                 name={name}
                 value={opt.value}
                 checked={state[name] === opt.value}
                 onChange={() => setters[name](opt.value)}
-                className="w-5 h-5 [accent-color:var(--color-primary)] cursor-pointer shrink-0"
+                className="w-5 h-5 [accent-color:var(--button)] cursor-pointer shrink-0"
               />
               {opt.label}
             </label>
@@ -104,14 +104,14 @@ export default function FiltersPanel() {
       <div className="flex flex-col gap-4 mt-2">
         <button
           onClick={handleSearch}
-          className="w-full py-4 bg-primary text-white border-none rounded-full text-base font-medium cursor-pointer transition-colors hover:bg-primary-hover"
+          className="w-full py-4 bg-[var(--button)] text-white border-none rounded-full text-base font-medium cursor-pointer transition-colors hover:bg-[var(--button-hover)]"
         >
           Search
         </button>
         {hasActiveFilters && (
           <button
             onClick={handleClear}
-            className="w-full py-4 bg-transparent text-text-main border border-text-main rounded-full text-base font-medium cursor-pointer flex items-center justify-center gap-2 transition-opacity hover:opacity-70"
+            className="w-full py-4 bg-transparent text-[var(--main)] border border-[var(--main)] rounded-full text-base font-medium cursor-pointer flex items-center justify-center gap-2 transition-opacity hover:opacity-70"
           >
             <Icon id="close" size={16} />
             Clear filters

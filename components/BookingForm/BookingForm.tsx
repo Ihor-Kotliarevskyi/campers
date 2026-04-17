@@ -12,7 +12,7 @@ const validationSchema = Yup.object({
 
 const initialValues = { name: '', email: '' };
 
-const inputBase = 'w-full px-[18px] py-[14px] bg-bg-gray border rounded-xl text-base text-text-main outline-none transition-colors placeholder:text-text-secondary focus:border-primary';
+const inputBase = 'w-full px-[18px] py-[14px] bg-[var(--inputs)] border rounded-xl text-base text-[var(--main)] outline-none transition-colors placeholder:text-[var(--text)] focus:border-[var(--button)]';
 
 export default function BookingForm({ camperId }: { camperId: string }) {
   const handleSubmit = async (
@@ -29,9 +29,9 @@ export default function BookingForm({ camperId }: { camperId: string }) {
   };
 
   return (
-    <div className="bg-white border border-border rounded-[20px] p-10">
-      <h2 className="text-xl font-semibold text-text-main m-0 mb-2">Book your campervan now</h2>
-      <p className="text-sm text-text-secondary m-0 mb-6 leading-relaxed">Stay connected! We are always ready to help you.</p>
+    <div className="bg-white border border-[var(--gray-light)] rounded-[20px] p-10">
+      <h2 className="text-xl font-semibold text-[var(--main)] m-0 mb-2">Book your campervan now</h2>
+      <p className="text-sm text-[var(--text)] m-0 mb-6 leading-relaxed">Stay connected! We are always ready to help you.</p>
 
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
         {({ errors, touched, isSubmitting }) => (
@@ -59,7 +59,7 @@ export default function BookingForm({ camperId }: { camperId: string }) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 mt-2 bg-primary text-white border-none rounded-full text-base font-medium cursor-pointer transition-colors [&:hover:not(:disabled)]:bg-primary-hover disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full py-4 mt-2 bg-[var(--button)] text-white border-none rounded-full text-base font-medium cursor-pointer transition-colors [&:hover:not(:disabled)]:bg-[var(--button-hover)] disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Sending...' : 'Send'}
             </button>
