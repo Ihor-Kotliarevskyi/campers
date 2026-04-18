@@ -5,12 +5,14 @@ interface LoadMoreButtonProps {
 
 export default function LoadMoreButton({ onClick, loading }: LoadMoreButtonProps) {
   return (
-    <button
-      onClick={onClick}
-      disabled={loading}
-      className="block mx-auto mt-12 px-12 py-4 bg-transparent text-text-main border border-text-main rounded-full text-base font-medium cursor-pointer transition-opacity [&:hover:not(:disabled)]:opacity-70 disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      {loading ? 'Loading...' : 'Load more'}
-    </button>
+    <div className="flex justify-center mt-10">
+      <button
+        onClick={onClick}
+        disabled={loading}
+        className="flex items-center justify-center w-auto h-14 px-8 py-4 bg-transparent border border-[var(--gray-light)] rounded-[200px] text-base font-medium leading-normal tracking-[-0.01em] text-[var(--main)] cursor-pointer outline-none transition-opacity hover:opacity-70 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {loading ? 'Loading...' : 'Load more'}
+      </button>
+    </div>
   );
 }

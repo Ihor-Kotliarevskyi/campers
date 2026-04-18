@@ -5,6 +5,7 @@ import { useCampers } from '@/hooks/useCampers';
 import FiltersPanel from '@/components/FiltersPanel/FiltersPanel';
 import CamperList from '@/components/CamperList/CamperList';
 import LoadMoreButton from '@/components/LoadMoreButton/LoadMoreButton';
+import Spinner from '@/components/Spinner/Spinner';
 import { CamperFilters, CamperForm, Engine, Transmission } from '@/types/camper';
 
 export default function CatalogPageClient() {
@@ -16,16 +17,22 @@ export default function CatalogPageClient() {
     transmission: (searchParams.get('transmission') || undefined) as Transmission | undefined,
   };
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useCampers(filters);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useCampers(filters);
   const campers = data?.pages.flatMap((p) => p.items) ?? [];
 
   return (
     <div className="flex gap-[65px] max-w-[1440px] mx-auto p-16 items-start">
       <FiltersPanel />
       <div className="flex-1 min-w-0 pb-16">
-        <CamperList campers={campers} />
-        {hasNextPage && (
-          <LoadMoreButton onClick={fetchNextPage} loading={isFetchingNextPage} />
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <>
+            <CamperList campers={campers} />
+            {hasNextPage && (
+              <LoadMoreButton onClick={fetchNextPage} loading={isFetchingNextPage} />
+            )}
+          </>
         )}
       </div>
     </div>

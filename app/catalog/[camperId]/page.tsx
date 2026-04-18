@@ -17,41 +17,47 @@ export default async function CamperDetailPage({
   ]);
 
   return (
-    <div className="max-w-[1440px] mx-auto p-16 flex flex-col gap-16">
-      <section className="grid grid-cols-2 gap-12 items-start">
-        <div className="min-w-0 overflow-hidden">
-          <CamperGallery gallery={camper.gallery} />
-        </div>
+    <div className="max-w-[1440px] mx-auto px-16 pt-16 flex flex-col gap-[88px]">
+      <section className="grid grid-cols-2 gap-6">
+        <CamperGallery gallery={camper.gallery} />
 
-        <div className="flex flex-col gap-4 min-w-0">
-          <h1 className="text-[32px] font-semibold text-text-main m-0">{camper.name}</h1>
-
-          <div className="flex items-center gap-4 flex-wrap">
-            <span className="flex items-center gap-1 text-base text-text-main">
-              <Icon id="star-filled" size={16} color="var(--color-accent)" />
-              {camper.rating} ({reviews.length} Reviews)
-            </span>
-            <span className="flex items-center gap-1 text-base text-text-main">
-              <Icon id="map" size={16} color="var(--color-text-secondary)" />
-              {camper.location}
-            </span>
+        <div className="flex flex-col gap-6 min-w-0">
+          <div className="max-h-[300px] bg-[var(--inputs)] rounded-[16px] p-6">
+            <div className="flex justify-between items-center mb-2">
+              <h1 className="text-2xl font-semibold leading-[1.33333] text-[var(--main)] m-0">
+                {camper.name}
+              </h1>
+              <p className="text-2xl font-semibold leading-[1.33333] text-[var(--main)] m-0">
+                €{camper.price.toLocaleString()}
+              </p>
+            </div>
+            <div className="flex items-center gap-4 mb-4">
+              <span className="flex items-center gap-2 text-base font-normal leading-normal text-[var(--main)]">
+                <Icon id="star-filled" size={16} color="var(--rating)" />
+                {camper.rating} ({reviews.length} Reviews)
+              </span>
+              <span className="flex items-center gap-2 text-base font-normal leading-normal text-[var(--main)]">
+                <Icon id="map" size={16} color="var(--gray)" />
+                {camper.location}
+              </span>
+            </div>
+            <p className="text-base font-normal leading-normal text-[var(--text)] m-0 h-[120px] overflow-y-auto">
+              {camper.description}
+            </p>
           </div>
-
-          <p className="text-[28px] font-semibold text-text-main m-0">€{camper.price.toLocaleString()}</p>
-          <p className="text-base text-text-secondary leading-relaxed m-0">{camper.description}</p>
 
           <CamperFeatures camper={camper} />
         </div>
       </section>
-
-      <section className="grid grid-cols-2 gap-12 items-start pb-16">
-        <div className="min-w-0">
+      <div className="flex flex-col gap-6 pb-16">
+        <h2 className="text-2xl font-semibold leading-[1.33333] text-[var(--main)] m-0">
+          Reviews
+        </h2>
+        <div className="grid grid-cols-2 gap-6 items-start">
           <CamperReviews reviews={reviews} />
-        </div>
-        <div className="min-w-0">
           <BookingForm camperId={camper.id} />
         </div>
-      </section>
+      </div>
     </div>
   );
 }
