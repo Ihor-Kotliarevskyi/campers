@@ -7,23 +7,23 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="bg-white border-b border-border">
-      <div className="max-w-[1440px] mx-auto px-16 py-5 flex items-center justify-between">
-        <Link href="/" className="no-underline">
-          <span className="font-bold text-text-main text-xl">Travel</span>
-          <span className="font-normal text-text-main text-xl">Trucks</span>
+    <header className="bg-[var(--inputs)] border-b border-[var(--gray-light)]">
+      <div className="relative max-w-[1440px] mx-auto pl-16 h-[72px] flex items-center">
+        <Link href="/" className="no-underline font-medium text-base" style={{ fontFamily: '"Inter", sans-serif' }}>
+          <span className="text-[var(--main)]">Travel</span>
+          <span className="text-[var(--text)]">Trucks</span>
         </Link>
 
-        <nav className="flex gap-10">
+        <nav className="absolute left-1/2 -translate-x-1/2 flex gap-8">
           <Link
             href="/"
-            className={`no-underline text-base font-medium ${pathname === '/' ? 'text-text-main' : 'text-text-secondary'}`}
+            className={`no-underline text-base font-medium ${pathname === '/' ? 'text-[var(--grey-green)]' : 'text-[var(--main)]'}`}
           >
             Home
           </Link>
           <Link
             href="/catalog"
-            className={`no-underline text-base font-medium ${pathname.startsWith('/catalog') ? 'text-text-main' : 'text-text-secondary'}`}
+            className={`no-underline text-base font-medium ${pathname.startsWith('/catalog') ? 'text-[var(--grey-green)]' : 'text-[var(--main)]'}`}
           >
             Catalog
           </Link>

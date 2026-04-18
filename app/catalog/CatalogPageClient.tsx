@@ -20,7 +20,7 @@ export default function CatalogPageClient() {
   const campers = data?.pages.flatMap((p) => p.items) ?? [];
 
   return (
-    <div className="flex gap-16 max-w-[1440px] mx-auto p-16 items-start">
+    <div className="flex gap-[65px] max-w-[1440px] mx-auto p-16 items-start">
       <FiltersPanel />
       <div className="flex-1 min-w-0 pb-16">
         <CamperList campers={campers} />
