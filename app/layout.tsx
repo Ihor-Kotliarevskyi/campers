@@ -25,6 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <link rel="preload" as="image" href="/images/hero.jpg" fetchPriority="high" />
+      </head>
       <body>
         <TanStackProvider>
           <Header />

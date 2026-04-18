@@ -11,7 +11,7 @@ const FORM_LABELS: Record<string, string> = {
   semi_integrated: 'Semi Integrated',
 };
 
-export default function CamperCard({ camper }: { camper: Camper }) {
+export default function CamperCard({ camper, priority = false }: { camper: Camper; priority?: boolean }) {
   const { id, name, price, rating, location, description, form, engine, transmission, totalReviews, coverImage } = camper;
 
   const badges = [
@@ -24,7 +24,7 @@ export default function CamperCard({ camper }: { camper: Camper }) {
     <article className="flex gap-6 bg-[var(--inputs)] rounded-[16px] p-6 h-[312px] w-full overflow-hidden">
       <div className="relative h-full aspect-square shrink-0 rounded-[8px] overflow-hidden">
         {coverImage && (
-          <Image src={coverImage} alt={name} fill className="object-cover" />
+          <Image src={coverImage} alt={name} fill sizes="312px" priority={priority} className="object-cover" />
         )}
       </div>
 

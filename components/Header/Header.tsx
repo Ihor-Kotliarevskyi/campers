@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className="bg-[var(--inputs)] border-b border-[var(--gray-light)]">
       <div className="relative max-w-[1440px] mx-auto pl-16 h-[72px] flex items-center">
-        <Link href="/" className="no-underline">
+        <Link href="/" className="no-underline" aria-label="TravelTrucks home">
           <Icon id="logo" width={136} height={16} />
         </Link>
 

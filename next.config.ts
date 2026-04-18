@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "ac.goit.global",
-        pathname: "/fullstack/career/campers/**",
+        pathname: "/fullstack/**",
       },
     ],
   },
