@@ -1,4 +1,18 @@
+import type { Metadata } from 'next';
 import { fetchCamperById, fetchCamperReviews } from '@/lib/api';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ camperId: string }>;
+}): Promise<Metadata> {
+  const { camperId } = await params;
+  const camper = await fetchCamperById(camperId);
+  return {
+    title: `${camper.name} — TravelTrucks`,
+    description: camper.description,
+  };
+}
 import Icon from '@/components/Icon/Icon';
 import CamperGallery from '@/components/CamperGallery/CamperGallery';
 import CamperFeatures from '@/components/CamperFeatures/CamperFeatures';

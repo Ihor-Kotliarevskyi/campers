@@ -19,10 +19,10 @@ function StarRating({ rating }: { rating: number }) {
 export default function CamperReviews({ reviews }: { reviews: Review[] }) {
   return (
     <ul className="flex flex-col gap-6 list-none p-0 m-0">
-      {reviews.map((review, index) => {
+      {reviews.map((review) => {
         const initial = review.reviewer_name.charAt(0).toUpperCase();
         return (
-          <li key={index} className="bg-[var(--inputs)] rounded-[16px] p-4 flex flex-col gap-4">
+          <li key={review.id} className="bg-[var(--inputs)] rounded-[16px] p-4 flex flex-col gap-4">
             <div className="flex items-center gap-4">
               <div
                 className="shrink-0 flex items-center justify-center rounded-[60px]"
