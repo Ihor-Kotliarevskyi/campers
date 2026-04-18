@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Icon from '@/components/Icon/Icon';
 
 export default function Header() {
   const pathname = usePathname();
@@ -9,9 +10,8 @@ export default function Header() {
   return (
     <header className="bg-[var(--inputs)] border-b border-[var(--gray-light)]">
       <div className="relative max-w-[1440px] mx-auto pl-16 h-[72px] flex items-center">
-        <Link href="/" className="no-underline font-medium text-base" style={{ fontFamily: '"Inter", sans-serif' }}>
-          <span className="text-[var(--main)]">Travel</span>
-          <span className="text-[var(--text)]">Trucks</span>
+        <Link href="/" className="no-underline">
+          <Icon id="logo" width={136} height={16} />
         </Link>
 
         <nav className="absolute left-1/2 -translate-x-1/2 flex gap-8">
