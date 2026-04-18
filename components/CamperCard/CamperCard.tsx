@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Icon from '@/components/Icon/Icon';
+import type { IconId } from '@/components/Icon/Icon';
 import { Camper } from '@/types/camper';
 
 const FORM_LABELS: Record<string, string> = {
@@ -13,61 +14,63 @@ const FORM_LABELS: Record<string, string> = {
 export default function CamperCard({ camper }: { camper: Camper }) {
   const { id, name, price, rating, location, description, form, engine, transmission, totalReviews, coverImage } = camper;
 
+  const badges = [
+    { icon: 'gas-pump', label: engine.charAt(0).toUpperCase() + engine.slice(1) },
+    { icon: transmission === 'automatic' ? 'automatic' : 'manual', label: transmission.charAt(0).toUpperCase() + transmission.slice(1) },
+    { icon: 'van', label: FORM_LABELS[form] ?? form },
+  ] as { icon: IconId; label: string }[];
+
   return (
-    <article className="flex gap-6 bg-white border border-border rounded-[20px] p-6 w-full">
-      <div className="relative w-[290px] h-[310px] shrink-0 rounded-[10px] overflow-hidden">
+    <article className="flex gap-6 bg-[var(--inputs)] rounded-[16px] p-6 h-[312px] w-full overflow-hidden">
+      <div className="relative h-full aspect-square shrink-0 rounded-[8px] overflow-hidden">
         {coverImage && (
-          <Image
-            src={coverImage}
-            alt={name}
-            fill
-            sizes="290px"
-            className="object-cover"
-          />
+          <Image src={coverImage} alt={name} fill className="object-cover" />
         )}
       </div>
 
-      <div className="flex flex-col flex-1 gap-2">
-        <div className="flex justify-between items-start gap-4">
-          <h2 className="text-2xl font-semibold text-text-main m-0">{name}</h2>
-          <span className="text-2xl font-semibold text-text-main whitespace-nowrap">€{price.toLocaleString()}</span>
+      <div className="flex flex-col flex-1 gap-6 min-w-0 overflow-hidden">
+        <div className="flex flex-col gap-2">
+          <div className="flex items-start gap-8 min-w-0">
+            <h2 className="m-0 min-w-0 flex-1 truncate text-2xl font-semibold leading-[1.33333] text-[var(--main)]">
+              {name}
+            </h2>
+            <span className="shrink-0 whitespace-nowrap text-2xl font-semibold leading-[1.33333] text-[var(--main)]">
+              €{price.toLocaleString()}
+            </span>
+          </div>
+          <div className="flex items-center gap-4 flex-wrap">
+            <span className="flex items-center gap-2 text-base font-normal leading-normal text-[var(--main)]">
+              <Icon id="star-filled" size={16} color="var(--rating)" />
+              {rating} ({totalReviews} Reviews)
+            </span>
+            <span className="flex items-center gap-2 text-base font-normal leading-normal text-[var(--main)]">
+              <Icon id="map" size={16} color="var(--gray)" />
+              {location}
+            </span>
+          </div>
         </div>
 
-        <div className="flex items-center gap-4 flex-wrap">
-          <span className="flex items-center gap-1 text-base text-text-main">
-            <Icon id="star-filled" size={16} color="var(--color-accent)" />
-            {rating} ({totalReviews} Reviews)
-          </span>
-          <span className="flex items-center gap-1 text-base text-text-main">
-            <Icon id="map" size={16} color="var(--color-text-secondary)" />
-            {location}
-          </span>
-        </div>
+        <p className="m-0 truncate text-base font-normal leading-normal text-[var(--text)]">
+          {description}
+        </p>
 
-        {description && (
-          <p className="text-base text-text-secondary mt-1 leading-relaxed line-clamp-2">{description}</p>
-        )}
-
-        <div className="flex flex-wrap gap-2 mt-1">
-          <span className="inline-flex items-center gap-[6px] px-[18px] py-2 bg-bg-gray rounded-full text-sm font-medium text-text-main">
-            <Icon id="gas-pump" size={18} />
-            {engine.charAt(0).toUpperCase() + engine.slice(1)}
-          </span>
-          <span className="inline-flex items-center gap-[6px] px-[18px] py-2 bg-bg-gray rounded-full text-sm font-medium text-text-main">
-            <Icon id={transmission === 'automatic' ? 'automatic' : 'manual'} size={18} />
-            {transmission.charAt(0).toUpperCase() + transmission.slice(1)}
-          </span>
-          <span className="inline-flex items-center gap-[6px] px-[18px] py-2 bg-bg-gray rounded-full text-sm font-medium text-text-main">
-            <Icon id="van" size={18} />
-            {FORM_LABELS[form] ?? form}
-          </span>
+        <div className="flex flex-wrap gap-2">
+          {badges.map(({ icon, label }) => (
+            <span
+              key={icon}
+              className="inline-flex items-center gap-2 h-12 px-[18px] py-3 rounded-full bg-[var(--badges)] mix-blend-multiply text-base font-medium text-[var(--main)] whitespace-nowrap"
+            >
+              <Icon id={icon} size={20} />
+              {label}
+            </span>
+          ))}
         </div>
 
         <Link
           href={`/catalog/${id}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center mt-auto px-10 py-[14px] bg-primary text-white rounded-full text-base font-medium no-underline w-fit transition-colors hover:bg-primary-hover"
+          className="inline-flex items-center justify-center w-auto max-w-[172px] h-14 px-[60px] py-4 rounded-full bg-[var(--button)] text-base font-medium leading-normal text-white no-underline whitespace-nowrap transition-colors hover:bg-[var(--button-hover)]"
         >
           Show more
         </Link>

@@ -1,4 +1,8 @@
 export type IconId =
+  | 'logo'
+  | 'chevron-left'
+  | 'chevron-right'
+  | 'chevron-up'
   | 'map'
   | 'star-filled'
   | 'star-empty'
@@ -20,15 +24,17 @@ export type IconId =
 interface IconProps {
   id: IconId;
   size?: number;
+  width?: number;
+  height?: number;
   className?: string;
   color?: string;
 }
 
-export default function Icon({ id, size = 18, className, color = 'currentColor' }: IconProps) {
+export default function Icon({ id, size = 18, width, height, className, color = 'currentColor' }: IconProps) {
   return (
     <svg
-      width={size}
-      height={size}
+      width={width ?? size}
+      height={height ?? size}
       aria-hidden="true"
       focusable="false"
       color={color}

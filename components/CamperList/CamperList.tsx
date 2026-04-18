@@ -7,7 +7,7 @@ export default function CamperList({ campers }: { campers: Camper[] }) {
   }
 
   return (
-    <ul className="flex flex-col gap-8 list-none m-0 p-0">
+    <ul className="flex flex-col gap-8 list-none m-0 p-0 w-full">
       {campers.map((camper) => (
         <li key={camper.id}>
           <CamperCard camper={camper} />
