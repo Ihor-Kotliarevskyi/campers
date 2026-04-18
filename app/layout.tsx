@@ -14,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "TravelTrucks",
+  title: "Travel Trucks",
   description: "Find the perfect camper for your adventure",
 };
 

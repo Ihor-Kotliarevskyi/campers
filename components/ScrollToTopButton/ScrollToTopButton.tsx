@@ -18,7 +18,7 @@ export default function ScrollToTopButton() {
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label="Scroll to top"
-      className="fixed bottom-8 right-8 w-14 h-14 flex items-center justify-center bg-transparent border border-[var(--gray-light)] rounded-full text-[var(--main)] cursor-pointer outline-none transition-opacity hover:opacity-70"
+      className="fixed bottom-8 right-8 w-14 h-14 flex items-center justify-center bg-transparent border border-[var(--gray-light)] rounded-full cursor-pointer outline-none transition-opacity hover:opacity-70"
     >
       <Icon id="chevron-up" size={20} />
     </button>
