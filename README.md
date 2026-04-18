@@ -1,6 +1,6 @@
 # TravelTrucks
 
-Camper rental website — browse, filter, and book campervans across Ukraine.
+Camper rental website - browse, filter, and book campervans across Ukraine.
 
 **Live site:** [https://campers-mu.vercel.app](https://campers-mu.vercel.app)
 
@@ -24,9 +24,9 @@ Camper rental website — browse, filter, and book campervans across Ukraine.
 
 ## Pages
 
-- `/` — home page with hero section
-- `/catalog` — camper listing with filters and load-more pagination
-- `/catalog/[camperId]` — camper detail with photo gallery, reviews, and booking form
+- `/` - home page with hero section
+- `/catalog` - camper listing with filters and load-more pagination
+- `/catalog/[camperId]` - camper detail with photo gallery, reviews, and booking form
 
 ## Getting Started
 
@@ -56,4 +56,4 @@ Docs: [https://campers-api.goit.study/docs](https://campers-api.goit.study/docs)
 
 ## Author
 
-Ihor Kotliarevskyi — [jagor0707@gmail.com](mailto:jagor0707@gmail.com)
+Ihor Kotliarevskyi - [jagor0707@gmail.com](mailto:jagor0707@gmail.com)
