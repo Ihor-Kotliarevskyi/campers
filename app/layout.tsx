@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import Header from "@/components/Header/Header";
+import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
 import "./globals.css";
 
 const inter = Inter({
@@ -29,6 +30,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Toaster position="top-right" />
+          <ScrollToTopButton />
         </TanStackProvider>
       </body>
     </html>
