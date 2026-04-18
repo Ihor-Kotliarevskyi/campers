@@ -16,7 +16,8 @@ interface AmenityTag {
 }
 
 export default function CamperFeatures({ camper }: { camper: Camper }) {
-  const has = (key: string) => camper.amenities.includes(key);
+  const amenities = camper.amenities ?? [];
+  const has = (key: string) => amenities.includes(key);
 
   const amenityTags: AmenityTag[] = [
     { label: 'Automatic',  icon: 'automatic',    active: camper.transmission === 'automatic' },
