@@ -2,27 +2,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- кнопка --- */
   --button:        #829b91;
   --button-hover:  #6d7b75;
 
-  /* --- текст --- */
-  --main:          #101828;   /* основний текст */
-  --text:          #475467;   /* лого "Trucks" */
-  --gray:          #6c717b;   /* placeholder, legend */
+  --main:          #101828;   
+  --text:          #475467;   
+  --gray:          #6c717b;   
 
-  /* --- фони --- */
-  --inputs:        #f7f7f7;   /* хедер та інпути */
-  --badges:        #f2f4f7;   /* фон картки з іконками */
-  --white:         #ffffff;   /* фон інпуту локації */
+  --inputs:        #f7f7f7;   
+  --badges:        #f2f4f7;   
+  --white:         #ffffff;   
 
-  /* --- межі / зірки --- */
-  --gray-light:    #dadde1;   /* border, неактивна зірка */
-  --rating:        #ffc531;   /* активна зірка */
+  --gray-light:    #dadde1;   
+  --rating:        #ffc531;   
 
-  /* --- зелений акцент --- */
-  --grey-green:    #829b91;   /* активний лінк, чекбокс */
-  --green-hover:   #6d7b75;   /* ховер зеленого */
+  --grey-green:    #829b91;   
+  --green-hover:   #6d7b75;   
 }
 
 body {

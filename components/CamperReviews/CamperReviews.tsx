@@ -3,13 +3,13 @@ import { Review } from '@/types/camper';
 
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="flex gap-0.5">
+    <div className="flex gap-1">
       {Array.from({ length: 5 }, (_, i) => (
         <Icon
           key={i}
           id={i < Math.round(rating) ? 'star-filled' : 'star-empty'}
           size={16}
-          color={i < Math.round(rating) ? 'var(--color-accent)' : 'var(--color-border)'}
+          color={i < Math.round(rating) ? 'var(--rating)' : 'var(--gray-light)'}
         />
       ))}
     </div>
@@ -18,27 +18,27 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function CamperReviews({ reviews }: { reviews: Review[] }) {
   return (
-    <section className="flex flex-col">
-      <h2 className="text-xl font-semibold text-text-main m-0 mb-8">Reviews</h2>
-      <ul className="flex flex-col gap-6 list-none p-0 m-0">
-        {reviews.map((review, index) => {
-          const initial = review.reviewer_name.charAt(0).toUpperCase();
-          return (
-            <li key={index} className="bg-bg-gray rounded-2xl p-6 flex flex-col gap-4">
-              <div className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-full bg-primary-hover text-white flex items-center justify-center text-lg font-bold shrink-0">
-                  {initial}
-                </div>
-                <div>
-                  <p className="text-base font-semibold text-text-main m-0 mb-1">{review.reviewer_name}</p>
-                  <StarRating rating={review.reviewer_rating} />
-                </div>
+    <ul className="flex flex-col gap-6 list-none p-0 m-0">
+      {reviews.map((review, index) => {
+        const initial = review.reviewer_name.charAt(0).toUpperCase();
+        return (
+          <li key={index} className="bg-[var(--inputs)] rounded-[16px] p-4 flex flex-col gap-4">
+            <div className="flex items-center gap-4">
+              <div
+                className="shrink-0 flex items-center justify-center rounded-[60px]"
+                style={{ width: 60, height: 60, background: 'var(--white)', fontSize: 24, fontWeight: 600, lineHeight: 1.33333, color: 'var(--button)' }}
+              >
+                {initial}
               </div>
-              <p className="text-base text-text-main leading-relaxed m-0">{review.comment}</p>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
+              <div className="flex flex-col gap-2">
+                <p className="text-base font-semibold leading-normal text-[var(--main)] m-0">{review.reviewer_name}</p>
+                <StarRating rating={review.reviewer_rating} />
+              </div>
+            </div>
+            <p className="text-base font-normal leading-normal text-[var(--text)] m-0">{review.comment}</p>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
